@@ -77,3 +77,14 @@ def test_import_overview_and_analysis_flow(tmp_path):
     hermes_payload = hermes_response.json()
     assert hermes_payload["question"] == "今天组合里最需要关注什么？"
     assert "reply_outline" in hermes_payload
+
+
+def test_root_page_supports_prefixed_deployment(tmp_path):
+    app = create_app(db_path=tmp_path / "test.db", root_path="/invest")
+    client = TestClient(app)
+
+    response = client.get("/")
+
+    assert response.status_code == 200
+    assert "/invest/docs" in response.text
+    assert "Hermes Investment Core" in response.text

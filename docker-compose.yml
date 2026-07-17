@@ -6,6 +6,7 @@ services:
     container_name: hermes-invest-core
     restart: unless-stopped
     environment:
+      APP_ROOT_PATH: /invest
       INVEST_DB_PATH: /app/data/investment_core.db
     volumes:
       - ./data:/app/data
