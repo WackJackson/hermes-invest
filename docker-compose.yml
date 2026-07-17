@@ -1,0 +1,21 @@
+services:
+  invest-core:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hermes-invest-core
+    restart: unless-stopped
+    environment:
+      INVEST_DB_PATH: /app/data/investment_core.db
+    volumes:
+      - ./data:/app/data
+    ports:
+      - "127.0.0.1:18080:8080"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/healthz')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    mem_limit: 512m
+    cpus: 0.75

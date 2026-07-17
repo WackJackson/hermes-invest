@@ -1,0 +1,4 @@
+symbol,market,name,quantity,avg_cost,currency,account,open_date
+600519,CN,贵州茅台,10,1500,CNY,long-term,2020-01-01
+00700,HK,腾讯控股,100,300,HKD,long-term,2021-06-01
+AAPL,US,Apple,20,180,USD,long-term,2022-03-10
